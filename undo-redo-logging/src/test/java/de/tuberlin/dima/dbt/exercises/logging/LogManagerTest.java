@@ -113,7 +113,7 @@ public class LogManagerTest {
         verifyLogRecords(record(1, END_OF_CHECKPOINT));
     }
 
-    //@Test
+    @Test
     public void checkpointWriteLsn() {
         // given
         logManager.beginTransaction(1);
@@ -137,7 +137,7 @@ public class LogManagerTest {
                 ofEntries(entry(1, 0), entry(2, 1)));
     }
 
-    //@Test
+    @Test
     public void checkpointWriteDirtyPageTable() {
         // given
         logManager.beginTransaction(1);
@@ -153,7 +153,7 @@ public class LogManagerTest {
                 ofEntries(entry(1, 1), entry(2, 2)));
     }
 
-    //@Test
+    @Test
     public void analysisPass() {
         // given
         List<LogRecord> logRecords = asList(
@@ -169,7 +169,7 @@ public class LogManagerTest {
         assertThat(transactions, hasEntry(1, 4));
     }
 
-    //@Test
+    @Test
     public void redoPageInDirtyPageTable() {
         // given
         List<LogRecord> logRecords = asList(record(0, BEGIN_OF_CHECKPOINT),
@@ -183,7 +183,7 @@ public class LogManagerTest {
         verify(bufferManager).writeElement(1, 1, "A");
     }
 
-    //@Test
+    @Test
     public void redoIgnorePageNotInDirtyPageTable() {
         // given
         List<LogRecord> logRecords = asList(record(0, BEGIN_OF_CHECKPOINT),
@@ -197,7 +197,7 @@ public class LogManagerTest {
         verifyNoMoreInteractions(bufferManager);
     }
 
-    //@Test
+    @Test
     public void undoUpdatesInTransactions() {
         // given
         List<LogRecord> logRecords = asList(
